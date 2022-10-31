@@ -11,7 +11,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
   script_env:           # [win]
     # Unset `CMAKE_GENERATOR` and let Visual Studio set to its default
     - CMAKE_GENERATOR=  # [win]

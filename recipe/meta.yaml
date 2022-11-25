@@ -1,5 +1,5 @@
 {% set name = "optree" %}
-{% set version = "0.4.0" %}
+{% set version = "0.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 59f566c72793a1a26b1c07ce5599362f9f343c63985e6318d3477778b13d9e53
+  sha256: 9c7e2de5e5ba3a221dab3c4d245edc615373f582d36ac85cc3ec66c8cd190d76
 
 build:
   skip: True            # [python_impl == 'pypy']
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
   script_env:           # [win]
     # Unset `CMAKE_GENERATOR` and let Visual Studio set to its default
     - CMAKE_GENERATOR=  # [win]

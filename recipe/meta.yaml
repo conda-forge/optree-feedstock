@@ -10,10 +10,10 @@ source:
   sha256: 9c7e2de5e5ba3a221dab3c4d245edc615373f582d36ac85cc3ec66c8cd190d76
 
 build:
-  skip: True            # [python_impl == 'pypy']
+  skip: true  # [python_impl == 'pypy']
   script: {{ PYTHON }} -m pip install . -vv
   number: 0
-  script_env:           # [win]
+  script_env:   # [win]
     # Unset `CMAKE_GENERATOR` and let Visual Studio set to its default
     - CMAKE_GENERATOR=  # [win]
 

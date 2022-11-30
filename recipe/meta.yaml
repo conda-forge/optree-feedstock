@@ -1,5 +1,5 @@
 {% set name = "optree" %}
-{% set version = "0.4.2" %}
+{% set version = "0.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: fe403cfaa24f8126a7fd573e3a3f00e9bc6c07e3f7514f74d6b3b7880f6d4f2a
+  sha256: 709127beddb3826b74f9bcc1f78eec8a3a36a3475b2121b5a41822bd46a227ea
 
 build:
   skip: true  # [python_impl == 'pypy']

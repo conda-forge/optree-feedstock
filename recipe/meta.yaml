@@ -1,6 +1,6 @@
 {% set name = "optree" %}
-{% set version = "0.9.1" %}
-{% set sha256 = "d77262972b0a35ea0b5a91b80bfeeb1aae6abb796537d2ba79581a78247a09e7" %}
+{% set version = "0.9.2" %}
+{% set sha256 = "ed0e31f787c274da0cb354687030e0ebbe5a98d2a25876c7c114568fc9fc78d4" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,9 @@ source:
 
 build:
   skip: true  # [python_impl == 'pypy']
-  script: {{ PYTHON }} -m pip install . -vv
+  script: |
+    sed -i '' -E 's/20230802.0/20230125.3/' CMakeLists.txt  # [osx and x86_64]
+    {{ PYTHON }} -m pip install . -vv
   number: 0
   script_env:   # [win]
     # Unset `CMAKE_GENERATOR` and let Visual Studio set to its default

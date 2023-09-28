@@ -15,7 +15,7 @@ build:
   script: |
     sed -i '' -E 's/20230802.0/20230125.3/' CMakeLists.txt  # [osx and x86_64]
     {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
   script_env:   # [win]
     # Unset `CMAKE_GENERATOR` and let Visual Studio set to its default
     - CMAKE_GENERATOR=  # [win]

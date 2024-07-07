@@ -1,6 +1,6 @@
 {% set name = "optree" %}
-{% set version = "0.11.0" %}
-{% set sha256 = "8e6a46e95c3ea8546055087d6fe52a1dcd56de5182365f1469106cc72cdf3307" %}
+{% set version = "0.12.1" %}
+{% set sha256 = "76a2240e7482355966a73c6c701e3d1f148420a77849c78d175d3b08bf06ff36" %}
 
 package:
   name: {{ name|lower }}
@@ -24,6 +24,7 @@ requirements:
     - python                              # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - cmake >=3.15  # to support `CMAKE_GENERATOR`
     - make                                # [not win]
   host:

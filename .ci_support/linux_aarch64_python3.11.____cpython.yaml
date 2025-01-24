@@ -23,7 +23,7 @@ python:
 python_impl:
 - cpython
 target_platform:
-- linux-64
+- linux-aarch64
 zip_keys:
 - - python
   - python_impl

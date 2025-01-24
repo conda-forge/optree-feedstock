@@ -12,7 +12,6 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: true  # [python_impl == 'pypy']
   script: |
     {{ PYTHON }} -m pip install . -vv
   number: {{ build_number }}

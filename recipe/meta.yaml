@@ -1,7 +1,7 @@
 {% set name = "optree" %}
 {% set version = "0.14.1" %}
 {% set sha256 = "c011c6124d6dcbfceade2d7c4f836eab66ed8cf9ab12f94535b41a71dd734637" %}
-{% set build_number = 0 %}
+{% set build_number = 1 %}
 
 package:
   name: {{ name|lower }}
@@ -15,7 +15,9 @@ build:
   script: |
     {{ PYTHON }} -m pip install . -vv
   number: {{ build_number }}
-  script_env:   # [win]
+  script_env:
+    - _GLIBCXX_USE_CXX11_ABI=1
+    - CMAKE_CXX_STANDARD=20
     # Unset `CMAKE_GENERATOR` and let Visual Studio set to its default
     - CMAKE_GENERATOR=  # [win]
 

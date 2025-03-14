@@ -17,7 +17,6 @@ build:
   number: {{ build_number }}
   script_env:
     - _GLIBCXX_USE_CXX11_ABI=1
-    - CMAKE_CXX_STANDARD=20
     # Unset `CMAKE_GENERATOR` and let Visual Studio set to its default
     - CMAKE_GENERATOR=  # [win]
 

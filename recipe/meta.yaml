@@ -11,7 +11,7 @@ source:
 
 build:
   script: |
-    {{ PYTHON }} -m pip install . -vv
+    {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
   script_env:
     - _GLIBCXX_USE_CXX11_ABI=1
@@ -38,10 +38,14 @@ requirements:
 test:
   imports:
     - optree
-  commands:
-    - pip check
+  source_files:
+    - tests
   requires:
     - pip
+    - pytest
+  commands:
+    - pip check
+    - pytest -W always -W error tests
 
 about:
   home: https://github.com/metaopt/optree

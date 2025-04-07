@@ -42,13 +42,14 @@ test:
   imports:
     - optree
   source_files:
+    - pyproject.toml
     - tests
   requires:
     - pip
     - pytest
   commands:
     - pip check
-    - pytest -Walways -Werror tests
+    - pytest -Walways -Werror --showlocals tests
 
 about:
   home: https://github.com/metaopt/optree

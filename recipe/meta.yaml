@@ -8,6 +8,9 @@ package:
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: d00a45e3b192093ef2cd32bf0d541ecbfc93c1bd73a5f3fe36293499f28a50cf
+  patches:
+    # Backport: https://github.com/metaopt/optree/pull/207
+    - 01-set-recursionlimit-in-tests.patch
 
 build:
   script: |
@@ -45,8 +48,6 @@ test:
     - pytest
   commands:
     - pip check
-    # Set recursion limit for Windows to avoid stack overflow errors in tests
-    - echo "import sys; sys.setrecursionlimit(50)" >> tests/conftest.py  # [win and py>=313]
     - pytest -Walways -Werror tests
 
 about:

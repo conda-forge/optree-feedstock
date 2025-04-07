@@ -11,7 +11,7 @@ source:
 
 build:
   script: |
-    {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation .
   number: 0
   script_env:
     - _GLIBCXX_USE_CXX11_ABI=1
@@ -45,7 +45,9 @@ test:
     - pytest
   commands:
     - pip check
-    - pytest -W always -W error tests
+    # Set recursion limit for Windows to avoid stack overflow errors in tests
+    - echo "import sys; sys.setrecursionlimit(50)" >> tests/conftest.py  # [win and py>=313]
+    - pytest -Walways -Werror tests
 
 about:
   home: https://github.com/metaopt/optree

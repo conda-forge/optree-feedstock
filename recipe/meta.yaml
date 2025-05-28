@@ -1,5 +1,5 @@
 {% set name = "optree" %}
-{% set version = "0.15.0" %}
+{% set version = "0.16.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: d00a45e3b192093ef2cd32bf0d541ecbfc93c1bd73a5f3fe36293499f28a50cf
+  sha256: 3b3432754b0753f5166a0899c693e99fe00e02c48f90b511c0604aa6e4b4a59e
   patches:
     # Backport: https://github.com/metaopt/optree/pull/207
     - 01-set-recursionlimit-in-tests.patch

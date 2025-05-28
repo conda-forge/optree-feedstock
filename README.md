@@ -13,6 +13,8 @@ Development: https://github.com/metaopt/optree
 
 Documentation: https://optree.readthedocs.io
 
+Optimized PyTree Utilities.
+
 Current build status
 ====================
 

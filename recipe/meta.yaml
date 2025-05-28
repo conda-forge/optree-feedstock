@@ -8,9 +8,6 @@ package:
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 3b3432754b0753f5166a0899c693e99fe00e02c48f90b511c0604aa6e4b4a59e
-  patches:
-    # Backport: https://github.com/metaopt/optree/pull/207
-    - 01-set-recursionlimit-in-tests.patch
 
 build:
   script: |
@@ -36,7 +33,7 @@ requirements:
     - pybind11 >=2.12
   run:
     - python
-    - typing-extensions >=4.5
+    - typing-extensions >=4.6
 
 test:
   imports:
@@ -54,6 +51,7 @@ test:
 about:
   home: https://github.com/metaopt/optree
   summary: Optimized PyTree Utilities
+  description: Optimized PyTree Utilities.
   dev_url: https://github.com/metaopt/optree
   doc_url: https://optree.readthedocs.io
   license: Apache-2.0

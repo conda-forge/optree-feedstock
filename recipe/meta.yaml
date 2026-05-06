@@ -14,7 +14,6 @@ build:
     {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation .
   number: 0
   script_env:
-    - _GLIBCXX_USE_CXX11_ABI=1
     # Unset `CMAKE_GENERATOR` and let Visual Studio set to its default
     - CMAKE_GENERATOR=  # [win]
 
@@ -33,7 +32,8 @@ requirements:
     - pybind11 >=2.12
   run:
     - python
-    - typing-extensions >=4.12
+    - typing-extensions >=4.6   # [py < 313]
+    - typing-extensions >=4.12  # [py >= 313]
 
 test:
   imports:

@@ -10,14 +10,15 @@ source:
   sha256: c7403eb0f2b2a060a97803a8f52904212df85ed6cff4b0eeed9cc6e38c2cf88d
 
 build:
-  script: |
-    {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation .
+  script:
+    # conda-build pre-sets CMAKE_GENERATOR to the generator of the `vs2022`
+    # compiler ("Visual Studio 17 2022"), and the vc activation script refuses
+    # to override a non-empty value. The windows-11-arm runners only have
+    # VS 2026, so re-apply the generator the activation script computed
+    # (CMAKE_GEN) here, after activation has run.
+    - if not "%CMAKE_GEN%" == "" set "CMAKE_GENERATOR=%CMAKE_GEN%"  # [win]
+    - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation .
   number: 1
-  # NOTE: do not unset `CMAKE_GENERATOR` here. The vc activation script sets it
-  # (with `CMAKE_GENERATOR_PLATFORM`/`CMAKE_GENERATOR_TOOLSET`) to a generator
-  # matching the Visual Studio actually installed on the image. The
-  # windows-11-arm runners ship VS 2026, and unsetting the variable makes CMake
-  # default to the nonexistent "Visual Studio 17 2022" generator.
 
 requirements:
   build:

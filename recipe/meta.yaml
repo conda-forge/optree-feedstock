@@ -13,9 +13,11 @@ build:
   script: |
     {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation .
   number: 1
-  script_env:
-    # Unset `CMAKE_GENERATOR` and let Visual Studio set to its default
-    - CMAKE_GENERATOR=  # [win]
+  # NOTE: do not unset `CMAKE_GENERATOR` here. The vc activation script sets it
+  # (with `CMAKE_GENERATOR_PLATFORM`/`CMAKE_GENERATOR_TOOLSET`) to a generator
+  # matching the Visual Studio actually installed on the image. The
+  # windows-11-arm runners ship VS 2026, and unsetting the variable makes CMake
+  # default to the nonexistent "Visual Studio 17 2022" generator.
 
 requirements:
   build:

@@ -18,7 +18,7 @@ build:
     # (CMAKE_GEN) here, after activation has run.
     - if not "%CMAKE_GEN%" == "" set "CMAKE_GENERATOR=%CMAKE_GEN%"  # [win]
     - {{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation .
-  number: 2
+  number: 3
 
 requirements:
   build:
